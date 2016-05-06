@@ -1,0 +1,127 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" herf="../bower_components/paper-drawer-panel/paper-drawer-panel.html" />
+<link rel="import" herf="../bower_components/paper-header-panel/paper-header-panel.html" />
+<link rel="import" herf="../bower_components/paper-toolbar/paper-toolbar.html" />
+<link rel="import" herf="../bower_components/paper-menu/paper-menu.html" />
+<link rel="import" herf="../bower_components/paper-item/paper-item.html" />
+<link rel="import" herf="../bower_components/iron-ajax/iron-ajax.html" />
+<link rel="import" herf="../bower_components/iron-pages/iron-pages.html" />
+<link rel="import" herf="../bower_components/iron-image/iron-image.html" />
+
+
+<link rel="import" herf="../bower_components/paper-icon-button/paper-icon-button.html" />
+
+<link rel="import" href="pro-card/x-app.html" />
+<dom-module id="profile-page">
+  <template>
+    <style>
+      /* local DOM styles go here */
+      :host {
+        display: inline-block;
+      }
+
+      .irimg{
+        width: 200px;
+      height: 200px;
+
+
+      border-radius: 100px;
+      margin-left: 5px;
+      margin-top: 5px;
+
+      background-size: 90%;
+      background-repeat: no-repeat;
+      background-position:center;
+      }
+     .namepro{
+       margin: 5px;
+       margin-left: 10px;
+       margin-top: 80px;
+     }
+
+     #repupoints{
+       margin-left: 230px;
+
+
+     }
+     #pointsre{
+       font-size: 60px;
+       margin-top: 50px;
+     }
+     #repu{
+       margin-top: -60px;
+       margin-left: 10px;
+       align-self: center;
+     }
+     div.hr {
+background: #fff  no-repeat scroll center;
+margin-left: 10px;
+margin-right: 15em;
+width:650px;
+height:2px;
+}
+  #badg{
+    margin-left: 10px;
+
+  }
+
+
+  
+  .flex-reversed {
+    @apply(--layout-horizontal-reverse);
+  }
+
+    </style>
+    <style is="custom-style">
+  .flex {
+    @apply(--layout-horizontal);
+    width:700px;
+    height:500px;
+    margin-bottom: -270px;
+
+  }
+
+
+</style>
+    <!-- local DOM goes here -->
+    <div class="procard">
+
+
+    <paper-material class="container flex" elevation="3">
+
+
+  <div>
+     <img class="irimg"  src="../image/i.jpg" alt="Mountain View" >
+  </div>
+  <div  >
+      <h1 class="namepro" >John Shaw</h1>
+  </div>
+  <div class="container flex-reversed">
+<div id="repupoints" >
+
+<h3 id="pointsre" >200</h2>
+<h4 id="repu">Reputations</h4>
+
+</div>
+
+
+
+  </div>
+
+
+
+    </paper-material>
+
+      <div ><hi id="badg">Badge</hi>
+      <div class="hr"><hr /></div>
+    </div>
+
+</div>
+  </template>
+  <script>
+  Polymer({
+    is: 'profile-page',
+  });
+  </script>
+</dom-module>

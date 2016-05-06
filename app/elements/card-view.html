@@ -1,0 +1,124 @@
+
+  <link rel="import" href="../bower_components/polymer/polymer.html">
+  <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+  <link rel="import" href="../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../bower_components/paper-card/paper-card.html">
+  <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html" />
+
+
+
+
+  <dom-module id="card-view">
+
+
+    <template>
+      <style>
+     #explore {
+       background-color: #9CCC65;
+       color: #616161;
+     }
+
+      </style>
+
+    <style include="iron-flex iron-flex-layout">
+    /* local styles go here */
+    :host {
+      display: block;
+      max-width: 1450px;
+    }
+    .card {
+    max-width: 311px;
+
+
+    width:auto;
+    min-width: inherit;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    .card{
+      display: block;
+
+    }
+    @media screen and (min-width: 1240px) {
+  .card {
+    width: 1240px;
+  }
+}
+
+@media screen and (min-width: 930px) and (max-width: 1239px) {
+  .card {
+    width: 930px;
+  }
+}
+
+@media screen and (min-width: 620px) and (max-width: 929px) {
+  .card {
+    width: 620px;
+  }
+}
+
+@media screen and (min-width: 310px)  and (max-width: 400px) {
+  .card {
+    width: 310px;
+    margin-left: 25px;
+
+  }
+  @media screen and (min-width:401) and (max-width : 619px){
+  .card{
+    width: 310px;
+    margin: 0 auto;
+
+  }
+}
+
+  </style>
+
+  <!-- local DOM goes here -->
+  <div class="container flex layout horizontal wrap">
+
+<template is="dom-repeat" items="{{list}}">
+        <div class="card">
+          <paper-card  heading="{{item.first}}" image="../image/{{item.last}}.jpg">
+
+            <div class="card-actions">
+                <paper-button id="explore">Explore!</paper-button>
+
+              <paper-icon-button src="../image/Octocat.png"
+              alt="octocat" title="octocat"></paper-icon-button>
+              <paper-icon-button src="../image/gm.ico"
+              alt="octocat" title="octocat"></paper-icon-button>
+              <paper-icon-button src="../image/twi.png"
+              alt="octocat" title="octocat"></paper-icon-button>
+
+            </div>
+          </paper-card>
+        </div>
+
+</template>
+
+  </div>
+    </template>
+
+    <script>
+      Polymer({
+        is: 'card-view',
+        ready: function() {
+            this.list = [
+                {first: 'Bob', last: 'i'},
+                {first: 'Sally', last: 'j'},
+                {first: 'Sally', last: 'k'},
+                {first: 'Sally', last: 'l'},
+                {first: 'Sally', last: 'm'},
+                {first: 'Sally', last: 'n'},
+                {first: 'Sally', last: 'o'},
+                {first: 'Sally', last: 'p'}
+
+
+            ];
+          }
+      });
+    </script>
+
+  </dom-module>

@@ -1,0 +1,268 @@
+<dom-module id="x-app">
+<link rel="import" type="css" href="x-app.css">
+<style>
+[parent]{
+    
+    @apply(--layout-center-justified);
+    
+}
+[logo]{
+background-color: red;
+margin-top: 4px;    
+height: 100px;
+ 
+ 
+}
+[certificate-page]{
+  @apply(--layout-vertical);  
+  margin: 4% 4% 4% 4%;
+ 
+}
+
+
+[certificate-page-heading]{
+  font-size: 35px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+[certificate-box]{
+  @apply(--layout-horizontal);
+  /*background-color:red;*/
+  height: 200px;
+@apply(--layout-flex);
+  margin-left: 4% 4% 4% 4%;
+}
+
+[coverup]{
+  height: 700px;
+  @apply(--layout-scroll);
+
+}
+[certificate-border]{
+  width: 400px;
+  @apply(--layout-flex);
+}
+[certificate-details]{
+  @apply(--layout-vertical);
+  @apply(--layout-center-justified);
+  @apply(--layout-flex);
+  @apply(--layout-scroll);
+  height: 180px;
+  margin: 2% 2% 2% 2%;
+  margin-left: 4%;
+  font-size: 16px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  text-align: justify;
+
+}
+</style>
+
+  <template>
+    <!-- <span id="testparent"><gdg-nav id="test"></gdg-nav></span> -->
+                <paper-drawer-panel id="drawerPanel" responsive-width="1024px" drawer-width="{{drawerWidth}}" >
+                <paper-header-panel  id = "topper" style=" background-color: #fafafa;"class="list-panel" drawer mode="standard">
+
+                  <paper-toolbar  class$="{{toolbarClass}}"  id="test1111">
+
+                  </paper-toolbar>
+
+                    <paper-menu id="sidemenu" class="list" on-iron-activate="_listTap" selected="{{selectedIndex}}" >
+                    <paper-item id="about">Home</paper-item>
+                    <paper-item id="about">About</paper-item>
+                    <paper-item id="cert">Certificates</paper-item>
+                     <paper-item id="complete">Complete Signup</paper-item>
+                   
+                    
+                    </paper-menu>
+                    </paper-header-panel>
+                    <paper-header-panel class="main-panel" main mode="{{mainMode}}">
+                    <paper-toolbar class$="{{toolbarClass}}">
+                    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                  </paper-toolbar>
+
+
+<iron-ajax
+      id="ajax" 
+      handle-as="json"
+      
+      last-response="{{profile}}"
+      debounce-duration="3000"
+      url = "https://api.myjson.com/bins/3n05i"
+      >
+</iron-ajax>
+
+
+
+
+<iron-pages selected="{{selectedIndex}}" id="ironpage">
+<div id="0">
+</div>
+<div id="1">
+  <paper-material id="mypage" elevation="3">        
+            <div data-top id="d0">
+                              <div box>
+                                    <iron-image-circle style="width:120px; height:120px;"  fadein="True"  sizing="cover" src$="{{profile.profilepicture.url}}"></iron-image-circle>
+                              </div>
+                              <div box1>
+                                    <span username>{{profile.username}}</span>
+                              </div>
+                              <div box2>
+                                    <div score>{{profile.rep}}</div>
+                                    <div reputation>Reputation</div>
+                              </div>
+            </div> 
+            <div data-mid id="d1" divider>
+                                              <div sectionname>Badges
+                                              </div>
+                                               <div badgex>
+                                                <template is="dom-repeat" id="menu" items="{{profile.badges}}">                                              
+                                                  <div badgecontainer>                                                    
+                                                    <div>
+                                                       <iron-image-circle style="width:100px; height:100px;"  fadein="True"  sizing="cover" src$="{{item.url}}"></iron-image-circle>
+                                                    </div>
+                                                  </div>
+                                                </template>
+                                              </div>                          
+                </div>              
+            <div data-end  divider class="flex" id="d2" >
+                        <div certificatesection >
+                                  <span certificatesectionheader>Certificates</span>
+                                              <div certificatecontainer >
+                                                      <br><br>
+                                                    <template is="dom-repeat" id="menu" items="{{profile.certificates}}">                                                        
+                                                      <div certificate >
+                                                        <div Cbox>
+                                                            <iron-image style="width:150px; height: 100px;"  fadein="True"  sizing="cover" src="http://photos1.meetupstatic.com/photos/event/2/3/a/c/600_433329132.jpeg"></iron-image>
+                                                        </div>
+                                                        <span certificate-description>Successfully completed android study jam conducted by GDG Cochin on 18 March 2014</span>
+                                                      </div>
+                                                    </template>
+                                              </div> 
+                        </div>                                                
+
+                    <div overviewsection >
+                                                  <span overviewsectionheader  >Overview</span>
+                                                  <br><br>
+                                                  <div overviewcontainer>
+                                                        <div jobandlocation>
+                                                              <div job >
+                                                                 <div job-heading>Job</div><div job-name>{{profile.job}}</div>
+                                                              </div>
+                                                              <div location>
+                                                                <div location-heading>Location</div><div location-name>{{profile.location}}</div>
+                                                              </div>
+                                                        </div><br><br>
+                                                        <div achievements>
+                                                                <div achievements-heading>Achievements</div>
+                                                                <div achievement-description>&#8226; Google Student Ambassador 2013.</div>
+                                                                <div achievement-description>&#8226; Intern at Entri.me</div>
+                                                                <div achievement-description>&#8226; Currently developing GDG Cochin website.</div>
+
+
+                                                        </div><br><br>
+                                                        <div skills >
+                                                            <div skill-heading>Skills</div>
+                                                            <div skill-description>&#8226; Polymer</div>
+                                                            <div skill-description>&#8226; HTML</div>
+                                                            <div skill-description>&#8226; CSS and JS</div>
+                                                        </div>
+                                                  </div>
+                  </div>
+             </div>
+  </paper-material>
+</div>
+
+<div id="2">
+<paper-material>
+<div certificate-page>
+  <br><br><br>
+  <span certificate-page-heading><center>Certificates</center></span><br><br><br>
+  <div coverup>
+  <br>
+  <div certificate-box>
+                                                  <div certifcate-border >
+                                                       <iron-image style="width:300px; height:200px;"  fadein="True"  sizing="cover" src="http://photos1.meetupstatic.com/photos/event/2/3/a/c/600_433329132.jpeg"></iron-image>
+                                                    </div>
+                                                    <div certificate-details >
+                                                      This certifcate was awarded to Mr Arun Purushtohaman for successfully completing the android course conducted by Google Developer Group Cochin along side Udacity and Google. The course was followed by a project which Mr Arun Purushothaman completed within the stiuplated time . The certificate was awarded on 18 March 2014.
+                                                    </div>
+  </div>
+
+
+</div>
+</div>
+</paper-material>
+</div>
+
+
+<div id="3">
+<paper-material>
+  <gdg-complete-registration></gdg-complete-registration>   
+</paper-material>
+</div>
+
+
+</iron-pages>
+
+
+        </paper-header-panel>
+        </paper-drawer-panel>
+        <iron-media-query query="(max-width: 780px)" query-matches="{{_isMobile}}"></iron-media-query>
+        </template>
+    <script>
+
+    Polymer({
+
+      is: 'x-app',
+
+      properties: {
+
+        _isMobile: {
+          type: Boolean,
+          observer: '_isMobileChanged'
+        },
+        selectedIndex: {
+          type: Number,
+          value: 1,
+          observer: '_selectedIndexChanged'
+      },
+
+
+      },
+
+
+      ready: function() {
+       this.$.ajax.generateRequest();
+       console.log("hello world");
+       },
+
+ 
+
+      _listTap: function() {
+        this.$.drawerPanel.closeDrawer();
+      },
+ 
+      _isMobileChanged: function(isMobile) {
+        this.mainMode = isMobile ? 'seamed' : 'cover';
+        this.drawerWidth = isMobile ? '' : '290px';
+        this.toolbarClass = isMobile ? '' : 'tall';
+        var flag = 0;
+        isMobile ? Polymer.dom(document.getElementById("testparent")).removeChild(Polymer.dom(document.getElementById("testparent")).childNodes[0]):'';
+        
+        this.updateStyles();
+        
+      },
+
+    _selectedIndexChanged: function() {
+        if(this.selectedIndex === 0){  window.location.href = "http://ahumblenerd.github.io/gdg-cochin/app/index.html"; }
+     
+    },
+
+
+
+    });
+
+  </script>    
+
+</dom-module>
